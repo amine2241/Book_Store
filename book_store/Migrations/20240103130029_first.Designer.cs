@@ -11,8 +11,8 @@ using book_store.Data;
 namespace book_store.Migrations
 {
     [DbContext(typeof(BookdbContext))]
-    [Migration("20240102162924_second_one")]
-    partial class second_one
+    [Migration("20240103130029_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
