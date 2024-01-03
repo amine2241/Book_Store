@@ -22,6 +22,12 @@ public partial class BookdbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Book>().HasData(
+            new Book { Id = 1, Author= "Stephen King", Description= "Horror book", Name= "It", Genre= "Horror", Price=12,Title="test",YearPublished=1998}
+            , 
+             new Book { Id = 2, Author = "dumb", Description = "Horror book", Name = "It", Genre = "Horror", Price = 12, Title = "test", YearPublished = 1998 }
+            );
+
         OnModelCreatingPartial(modelBuilder);
     }
 

@@ -1,10 +1,12 @@
 
+using book_store.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<BookdbContext>();
 
 
 var app = builder.Build();
