@@ -1,23 +1,9 @@
 ﻿@model List<Book> 
-
-   <h1>hello from morocco </h1>
-<table class ="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th>
-            Category Name
-        </th>
-        <th>
-            Display Order
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-        @foreach(var obj in Model){
-        <tr>
-            <td>@obj.Name</td>
-            <td>@obj.Genre</td>
-        </tr>
-        }
-    </tbody>
-</table>
+@foreach (var book in Model)
+{
+    <div>
+        <p>Title: @book.Title</p>
+        <p>Author: @book.Author</p>
+        <!-- Add more properties as needed -->
+    </div>
+}
