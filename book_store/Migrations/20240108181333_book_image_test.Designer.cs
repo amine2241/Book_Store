@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using book_store.Data;
 
@@ -10,9 +11,11 @@ using book_store.Data;
 namespace book_store.Migrations
 {
     [DbContext(typeof(BookdbContext))]
-    partial class BookdbContextModelSnapshot : ModelSnapshot
+    [Migration("20240108181333_book_image_test")]
+    partial class book_image_test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,18 +74,6 @@ namespace book_store.Migrations
                             Genre = "Horror Fiction",
                             ImageUrl = "https://jackets.dmmserver.com/media/356/97801413/9780141389400.jpg#images.titelive.com",
                             Name = "ETHAN FROME",
-                            Price = 12m,
-                            Title = "",
-                            YearPublished = 1998
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Author = "Wharton, Edith",
-                            Description = "Ethan Frome works his unproductive farm and struggles to maintain a bearable existence with his difficult, suspicious and hypochondriac wife, Zeena. But when Zeena's vivacious cousin enters their hous",
-                            Genre = "Horror Fiction",
-                            ImageUrl = "https://jackets.dmmserver.com/media/356/97801413/9780141389400.jpg#images.titelive.com",
-                            Name = "ETHAN FROMEe",
                             Price = 12m,
                             Title = "",
                             YearPublished = 1998

@@ -23,9 +23,8 @@ public partial class BookdbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Book>().HasData(
-            new Book { Id = 1, Author= "Stephen King", Description= "Horror book", Name= "It", Genre= "Horror", Price=12,Title="test",YearPublished=1998}
-            , 
-             new Book { Id = 2, Author = "dumb", Description = "Horror book", Name = "It", Genre = "Horror", Price = 12, Title = "test", YearPublished = 1998 }
+            new Book { Id = 1, Author= "Wharton, Edith", Description= "Ethan Frome works his unproductive farm and struggles to maintain a bearable existence with his difficult, suspicious and hypochondriac wife, Zeena. But when Zeena's vivacious cousin enters their hous", Name= "ETHAN FROME", Title = "" ,Genre= "Horror Fiction", Price=12,YearPublished=1998, ImageUrl = "https://jackets.dmmserver.com/media/356/97801413/9780141389400.jpg#images.titelive.com" },
+            new Book { Id = 2, Author = "Wharton, Edith", Description = "Ethan Frome works his unproductive farm and struggles to maintain a bearable existence with his difficult, suspicious and hypochondriac wife, Zeena. But when Zeena's vivacious cousin enters their hous", Name = "ETHAN FROMEe", Title = "", Genre = "Horror Fiction", Price = 12, YearPublished = 1998, ImageUrl = "https://jackets.dmmserver.com/media/356/97801413/9780141389400.jpg#images.titelive.com" }
             );
 
         OnModelCreatingPartial(modelBuilder);

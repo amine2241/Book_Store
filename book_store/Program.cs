@@ -13,6 +13,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = "/Home/Login";
+        options.AccessDeniedPath = "/Home/Login";
+        options.Cookie.Name = "top_cookies";
+        options.Cookie.HttpOnly = true; // Ensure HttpOnly flag for security
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     });
 
 var app = builder.Build();

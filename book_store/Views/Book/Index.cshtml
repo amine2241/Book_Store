@@ -1,8 +1,30 @@
 ﻿@model List<Book> 
-@foreach (var book in Model)
+@if (Model != null)
 {
-    <div>
-  
-    </div>
+    <p>book available.</p>
+    @foreach (var book in Model)
+    {
+            <div class="col-lg-2 col-md-3 col-sm-4">
+            <div class="item">
+                <a href="" target="_blank"><img src=@book.ImageUrl width="141" height="210"></a>
+                <h6>@book.Name</h6>
+                <h6>Auteur :@book.Author</h6>
+                <h6>Prix : <span class=" price">@book.Price</span></h6>
+                <h6>
+                    <a href="https://livremoi.ma/catalog/product/view/id/83238" target="_blank">
+                        Add to Cart
+                    </a>
+                </h6>
+            </div>
+            dede
+        </div>
+        // ... your existing code for rendering books
+    }
 }
-<div></div>
+else
+{
+    <p >No books available.</p>
+}
+
+
+
