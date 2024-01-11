@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using book_store.Data;
 
@@ -11,9 +12,11 @@ using book_store.Data;
 namespace book_store.Migrations
 {
     [DbContext(typeof(BookdbContext))]
-    partial class BookdbContextModelSnapshot : ModelSnapshot
+    [Migration("20240111172458_removed_slug")]
+    partial class removed_slug
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
