@@ -10,7 +10,6 @@ namespace book_store.Models
         public string Name { get; set; }
         [Required, MinLength(4, ErrorMessage = "Minimum length is 2")]
         public string Description { get; set; }
-        public string Title { get; set; }
 
         public string Author { get; set; }
 
