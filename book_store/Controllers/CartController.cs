@@ -56,6 +56,53 @@ namespace book_store.Controllers
 
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> Decrease(int id)
+        {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
+
+            CartItem cartItem = cart.Where(c => c.BookId == id).FirstOrDefault();
+
+            if (cartItem.Quantity > 1)
+            {
+                --cartItem.Quantity;
+            }
+            else
+            {
+                cart.RemoveAll(p => p.BookId == id);
+            }
+
+            if (cart.Count == 0)
+            {
+                HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart", cart);
+            }
+
+            TempData["Success"] = "The product has been removed!";
+
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> Remove(int id)
+        {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
+
+            cart.RemoveAll(p => p.BookId == id);
+
+            if (cart.Count == 0)
+            {
+                HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart", cart);
+            }
+
+            TempData["Success"] = "The product has been removed!";
+
+            return RedirectToAction("Index");
+        }
 
     }
 }
