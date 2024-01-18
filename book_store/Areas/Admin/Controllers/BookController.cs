@@ -129,6 +129,27 @@ namespace book_store.Areas.Admin.Controllers
 
             return View(book);
         }
+        public async Task<IActionResult> Delete(int id)
+        {
+            Book book = await _context.Books.FindAsync(id);
+
+            if (!string.Equals(book.ImageUrl, "noimage.png"))
+            {
+                string uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "media/Books");
+                string oldImagePath = Path.Combine(uploadsDir, book.ImageUrl);
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+            }
+
+            _context.Books.Remove(book);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "The product has been deleted!";
+
+            return RedirectToAction("Index");
+        }
 
 
 
