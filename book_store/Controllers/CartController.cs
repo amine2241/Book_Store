@@ -27,7 +27,7 @@ namespace book_store.Controllers
             return View(cartVM);
         }
 
-        public async Task<IActionResult> Add(long id)
+        public async Task<IActionResult> Add(int id)
         {
             Book product = await _context.Books.FindAsync(id);
 
@@ -49,6 +49,12 @@ namespace book_store.Controllers
             TempData["Success"] = "The product has been added!";
 
             return Redirect(Request.Headers["Referer"].ToString());
+        }
+        public IActionResult Clear()
+        {
+            HttpContext.Session.Remove("Cart");
+
+            return RedirectToAction("Index");
         }
 
     }
