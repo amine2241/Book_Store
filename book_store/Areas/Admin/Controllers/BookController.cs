@@ -40,6 +40,7 @@ namespace book_store.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Book book)
         {
             ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", book.CategoryId);
@@ -80,6 +81,55 @@ namespace book_store.Areas.Admin.Controllers
 
             return View(book);
         }
+        public async Task<IActionResult> Edit(int id)
+        {
+            Book book = await _context.Books.FindAsync(id);
+
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", book.CategoryId);
+
+            return View(book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Book book)
+        {
+            ViewBag.Categories = new SelectList(_context.Categories, "Id", "Name", book.CategoryId);
+
+            if (ModelState.IsValid)
+            {
+                book.Name = book.Name.ToLower().Replace(" ", "-");
+
+                var slug = await _context.Books.FirstOrDefaultAsync(p => p.Name == book.Name);
+                if (slug != null)
+                {
+                    ModelState.AddModelError("", "The book already exists.");
+                    return View(book);
+                }
+
+                if (book.ImageUpload != null)
+                {
+                    string uploadsDir = Path.Combine(_webHostEnvironment.WebRootPath, "media/Books");
+                    string imageName = Guid.NewGuid().ToString() + "_" + book.ImageUpload.FileName;
+
+                    string filePath = Path.Combine(uploadsDir, imageName);
+
+                    FileStream fs = new FileStream(filePath, FileMode.Create);
+                    await book.ImageUpload.CopyToAsync(fs);
+                    fs.Close();
+
+                    book.ImageUrl = imageName;
+                }
+
+                _context.Update(book);
+                await _context.SaveChangesAsync();
+
+                TempData["Success"] = "The book has been edited!";
+            }
+
+            return View(book);
+        }
+
 
 
     }
