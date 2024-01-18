@@ -9,7 +9,7 @@
     @foreach (var item in Model)
     {
         <div class="col-4">
-            <img src="/media/products/@item.ImageUrl" class="img-fluid" alt="" />
+            <img src="/media/books/@item.ImageUrl" class="img-fluid" alt="" />
             <h4>@item.Name</h4>
             <div>
                 @Html.Raw(item.Description)

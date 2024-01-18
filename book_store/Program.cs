@@ -20,12 +20,20 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.Cookie.HttpOnly = true; // Ensure HttpOnly flag for security
         options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     });
+
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.IsEssential = true;
+});
 //Added code 
 builder.Services.AddLogging(configure => configure.AddDebug().SetMinimumLevel(LogLevel.Debug));
 
 
 var app = builder.Build();
-app.UseCookiePolicy();
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
