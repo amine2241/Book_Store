@@ -4,6 +4,7 @@ namespace book_store.Models
 {
     public class CartItem
     {
+        [Key]
         public int BookId { get; set; }
         public string BookName { get; set; }
         public int Quantity { get; set; }

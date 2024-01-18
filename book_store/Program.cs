@@ -61,6 +61,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<BookdbContext>();
-SeedData.SeedDatabase(context);
+//SeedData.SeedDatabase(context);
 
 app.Run();

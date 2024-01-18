@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using book_store.Data;
 
@@ -11,9 +12,11 @@ using book_store.Data;
 namespace book_store.Migrations
 {
     [DbContext(typeof(BookdbContext))]
-    partial class BookdbContextModelSnapshot : ModelSnapshot
+    [Migration("20240118135153_keroumi ")]
+    partial class keroumi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,7 +85,7 @@ namespace book_store.Migrations
 
                     b.HasKey("BookId");
 
-                    b.ToTable("CartItem");
+                    b.ToTable("ShoppingCartItems");
                 });
 
             modelBuilder.Entity("book_store.Models.Category", b =>
