@@ -5,7 +5,6 @@
 }
 
 <h1>Books</h1>
-@if(Model.Any()){
 <div class="row">
     @foreach (var item in Model)
     {
@@ -29,13 +28,10 @@
 {
     <div class="d-flex w-100 justify-content-center">
         <pagination page-count="@ViewBag.TotalPages"
-                    page-target="/products/@ViewBag.CategorySlug"
+                    page-target="/Book/@ViewBag.CategorySlug"
                     page-number="@ViewBag.PageNumber"
                     page-range="@ViewBag.PageRange">
         </pagination>
-    </div>}}
-    else{
-        <p>hedeod</p>
-    }
+    </div>}
 
 

@@ -17,7 +17,7 @@ namespace book_store.Controllers
         }
         public async Task <IActionResult> Index(string categorySlug = "", int p= 1)
         {
-
+            Console.WriteLine($"CategorySlug: {categorySlug}, Page: {p}");
             int pageSize = 3; 
             ViewBag.PageNumber =p;
             ViewBag.PageRange= pageSize;
@@ -28,9 +28,7 @@ namespace book_store.Controllers
                 return View(await _context.Books.OrderByDescending(p => p.Id).Skip((p - 1) * pageSize).Take(pageSize).ToListAsync());
             }
             Category category = await _context.Categories.Where(c => c.Name == categorySlug).FirstOrDefaultAsync();
-            Console.WriteLine("category is" + category.Name);
             if (category == null) return RedirectToAction("Index");
-            Console.WriteLine("passed this check ");
 
             var booksByCategory = _context.Books.Where(p => p.Category.Id == category.Id);
             ViewBag.TotalPages = (int)Math.Ceiling((decimal)booksByCategory.Count() / pageSize);

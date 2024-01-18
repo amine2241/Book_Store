@@ -42,10 +42,16 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+app.MapControllerRoute(
+    name: "books",
+    pattern: "/Book/{categorySlug?}",
+    defaults: new { controller = "Book", action = "Index" });
+
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 var context = app.Services.CreateScope().ServiceProvider.GetRequiredService<BookdbContext>();
 SeedData.SeedDatabase(context);
 
