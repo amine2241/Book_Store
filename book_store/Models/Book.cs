@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using book_store.Data.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace book_store.Models
@@ -21,5 +22,9 @@ namespace book_store.Models
         [Column(TypeName = "decimal(8, 2)")]
         public decimal Price { get; set; }
         public string ImageUrl { get; set; }
+
+        [NotMapped]
+        [FileExtension]
+        public IFormFile ImageUpload { get; set; }
     }
 }

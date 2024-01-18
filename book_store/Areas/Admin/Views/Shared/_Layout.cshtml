@@ -43,12 +43,6 @@
     <div class="container">
         <main role="main" class="pb-3">
             <div class="row">
-                <div class="col-3">
-                    <vc:categories />
-                    <div class="bg-success mt-3 p-3 text-white">
-                        <vc:small-cart />
-                    </div>
-                </div>
                 <div class="col">
                     <partial name="_NotificationPartial" />
                     @RenderBody()
@@ -56,12 +50,6 @@
             </div>
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - book_store - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
