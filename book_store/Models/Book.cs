@@ -16,6 +16,8 @@ namespace book_store.Models
 
         public int YearPublished { get; set; }
 
+        [Required, Range(1, int.MaxValue, ErrorMessage = "You must choose a category")]
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "Please enter a value")]
