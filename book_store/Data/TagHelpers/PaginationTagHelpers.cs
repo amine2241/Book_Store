@@ -2,7 +2,7 @@
 using System.Text;
 namespace book_store.Data.TagHelpers
 {
-    public class PaginationTagHelpers: TagHelper
+    public class Pagination: TagHelper
     {
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {

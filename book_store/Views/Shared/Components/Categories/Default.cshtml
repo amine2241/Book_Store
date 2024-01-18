@@ -6,7 +6,7 @@
     @foreach(var category in Model)
     {
         <li class="list-group-item">
-            <a class=" nav-link text dark " asp-controller="Book" asp-action="Index">@category.Name</a>
+            <a class=" nav-link text dark " asp-controller="Book" asp-action="Index" asp-route-categorySlug ="@category.Name">@category.Name</a>
         </li>
     }
 </ul>

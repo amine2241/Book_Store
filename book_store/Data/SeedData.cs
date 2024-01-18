@@ -9,10 +9,13 @@ namespace ShoppingCart.Infrastructure
         public static void SeedDatabase(BookdbContext context)
         {
             context.Database.Migrate();
+            if (!context.Books.Any())
+            {
 
-     
+
+
                 Category fantasy = new Category { Name = "Fantasy" };
-                Category horror = new Category { Name = "Horror"};
+                Category horror = new Category { Name = "Horror" };
 
                 context.Books.AddRange(
      new Book
@@ -21,7 +24,6 @@ namespace ShoppingCart.Infrastructure
          Author = "J.D. Salinger",
          Description = "A classic novel exploring the struggles of adolescence.",
          YearPublished = 1951,
-         Genre = "Fiction",
          Category = fantasy,
          Price = 200,
          ImageUrl = "catcher-in-the-rye.jpg"
@@ -32,7 +34,6 @@ namespace ShoppingCart.Infrastructure
          Author = "George Orwell",
          Description = "A dystopian novel depicting a totalitarian society.",
          YearPublished = 1949,
-         Genre = "Fiction",
          Category = horror,
          Price = 100,
          ImageUrl = "1984.jpg"
@@ -43,7 +44,6 @@ namespace ShoppingCart.Infrastructure
          Author = "J.R.R. Tolkien",
          Description = "A fantasy novel about the adventures of Bilbo Baggins.",
          YearPublished = 1937,
-         Genre = "Fantasy",
          Category = fantasy,
          Price = 150,
          ImageUrl = "the-hobbit.jpg"
@@ -54,7 +54,6 @@ namespace ShoppingCart.Infrastructure
          Author = "Andy Weir",
          Description = "Science fiction novel about an astronaut stranded on Mars.",
          YearPublished = 2011,
-         Genre = "Science Fiction",
          Category = horror,
          Price = 50,
          ImageUrl = "the-martian.jpg"
@@ -65,7 +64,6 @@ namespace ShoppingCart.Infrastructure
          Author = "Tara Westover",
          Description = "Memoir about a woman who grows up in a strict and abusive household but eventually escapes to learn about the world.",
          YearPublished = 2018,
-         Genre = "Memoir",
          Category = fantasy,
          Price = 30,
          ImageUrl = "educated.jpg"
@@ -76,7 +74,6 @@ namespace ShoppingCart.Infrastructure
          Author = "Alex Michaelides",
          Description = "Psychological thriller about a woman's act of violence against her husband.",
          YearPublished = 2019,
-         Genre = "Thriller",
          Category = horror,
          Price = 80,
          ImageUrl = "the-silent-patient.jpg"
@@ -87,7 +84,6 @@ namespace ShoppingCart.Infrastructure
          Author = "Charles Duhigg",
          Description = "Exploration of the science behind why habits exist and how they can be changed.",
          YearPublished = 2012,
-         Genre = "Non-Fiction",
          Category = fantasy,
          Price = 160,
          ImageUrl = "the-power-of-habit.jpg"
@@ -98,7 +94,6 @@ namespace ShoppingCart.Infrastructure
          Author = "Michelle Obama",
          Description = "Memoir of the former First Lady of the United States.",
          YearPublished = 2018,
-         Genre = "Memoir",
          Category = horror,
          Price = 300,
          ImageUrl = "becoming.jpg"
@@ -107,7 +102,8 @@ namespace ShoppingCart.Infrastructure
 
 
                 context.SaveChanges();
-            
+
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using book_store.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using ShoppingCart.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.Cookie.HttpOnly = true; // Ensure HttpOnly flag for security
         options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     });
+//Added code 
+builder.Services.AddLogging(configure => configure.AddDebug().SetMinimumLevel(LogLevel.Debug));
+
 
 var app = builder.Build();
 app.UseCookiePolicy();

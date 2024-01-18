@@ -15,7 +15,6 @@ namespace book_store.Models
 
         public int YearPublished { get; set; }
 
-        public string Genre { get; set; }
         public Category Category { get; set; }
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "Please enter a value")]
