@@ -7,7 +7,6 @@ using System.Diagnostics;
 
 namespace book_store.Controllers
 {
-    [Authorize]
     public class BookController : Controller
     {
         private readonly BookdbContext _context; 

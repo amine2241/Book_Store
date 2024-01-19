@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace book_store.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class BookController : Controller
     {
         private readonly BookdbContext _context;
